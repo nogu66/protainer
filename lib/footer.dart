@@ -1,12 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import 'main_model.dart';
+class Footer extends StatefulWidget {
+  @override
+  _Footer createState() => _Footer();
+}
 
-class Footer extends StatelessWidget {
-  Footer(this.model);
-  MainModel model;
+class _Footer extends State<Footer> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,33 +24,29 @@ class Footer extends StatelessWidget {
             Icons.home,
           ),
           label: 'ホーム',
-          backgroundColor: Colors.yellow,
         ),
         BottomNavigationBarItem(
           icon: Icon(
             Icons.access_time,
           ),
           label: 'タイムライン',
-          backgroundColor: Colors.yellow,
         ),
         BottomNavigationBarItem(
           icon: Icon(
             Icons.star,
           ),
           label: 'ランキング',
-          backgroundColor: Colors.yellow,
         ),
         BottomNavigationBarItem(
           icon: Icon(
             Icons.person,
           ),
           label: 'マイページ',
-          backgroundColor: Colors.yellow,
         ),
       ],
-      currentIndex: model.buttonSelectedIndex,
+      currentIndex: _selectedIndex,
       selectedItemColor: Colors.black,
-      onTap: model.onTappedBottomBar,
+      onTap: _onItemTapped,
       type: BottomNavigationBarType.fixed,
     );
   }

@@ -28,7 +28,7 @@ class MyHomePage extends StatelessWidget {
       create: (_) => MainModel(),
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             'Protainer',
             style: TextStyle(fontSize: 30),
           ),
@@ -52,7 +52,7 @@ class MyHomePage extends StatelessWidget {
         // bottomNavigationBar: ,
         bottomNavigationBar: Consumer<MainModel>(
           builder: (context, model, child) {
-            return Footer(model);
+            return Footer();
           },
         ),
       ),
