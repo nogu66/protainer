@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:protainer/presentation/footer/footer.dart';
 import 'package:protainer/presentation/ranking/ranking_model.dart';
-import 'package:protainer/presentation/timeline/timeline_model.dart';
 import 'package:provider/provider.dart';
 
 class RankingPage extends StatelessWidget {
@@ -12,6 +10,7 @@ class RankingPage extends StatelessWidget {
       create: (_) => RankingModel(),
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: const Text(
             'Protainer',
             style: TextStyle(fontSize: 30),
@@ -31,7 +30,6 @@ class RankingPage extends StatelessWidget {
         //   // backgroundColor: Colors.yellow,
         // ),
         // bottomNavigationBar: ,
-        bottomNavigationBar: Footer(),
       ),
     );
   }

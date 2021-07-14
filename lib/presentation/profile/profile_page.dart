@@ -1,26 +1,34 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:protainer/presentation/footer/footer.dart';
 import 'package:protainer/presentation/profile/profile_model.dart';
-import 'package:protainer/presentation/ranking/ranking_model.dart';
-import 'package:protainer/presentation/timeline/timeline_model.dart';
 import 'package:provider/provider.dart';
 
-class RankingPage extends StatelessWidget {
+class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<ProfileModel>(
       create: (_) => ProfileModel(),
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: const Text(
             'Protainer',
             style: TextStyle(fontSize: 30),
           ),
         ),
         body: Consumer<ProfileModel>(builder: (context, model, child) {
-          return Column(
-            children: [],
+          final user = model.user;
+          return Center(
+            child: Column(
+              children: [
+                // Image.network(
+                //   user.imageURL,
+                //   width: 50,
+                // ),
+                // Text(user.name),
+                // Text(user.introduction),
+              ],
+            ),
           );
         }),
         // floatingActionButton: FloatingActionButton(
@@ -32,7 +40,6 @@ class RankingPage extends StatelessWidget {
         //   // backgroundColor: Colors.yellow,
         // ),
         // bottomNavigationBar: ,
-        bottomNavigationBar: Footer(),
       ),
     );
   }

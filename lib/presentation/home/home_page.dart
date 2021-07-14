@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:protainer/presentation/login/login_page.dart';
+import 'package:protainer/presentation/signup/signup_page.dart';
 import 'package:provider/provider.dart';
 
-import '../footer/footer.dart';
 import 'home_model.dart';
 
 class HomePage extends StatelessWidget {
@@ -12,6 +13,7 @@ class HomePage extends StatelessWidget {
       create: (_) => HomeModel()..getProteinsRealtime(),
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: const Text(
             'Protainer',
             style: TextStyle(fontSize: 30),
@@ -46,6 +48,26 @@ class HomePage extends StatelessWidget {
           return Column(
             children: [
               ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SignUpPage()),
+                  );
+                },
+                child: Text('新規登録'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LoginPage(),
+                    ),
+                  );
+                },
+                child: Text('ログイン'),
+              ),
+              ElevatedButton(
                 onPressed: () {},
                 child: Text('お気に入りのプロテインを探す'),
               ),
@@ -66,7 +88,6 @@ class HomePage extends StatelessWidget {
           // backgroundColor: Colors.yellow,
         ),
         // bottomNavigationBar: ,
-        bottomNavigationBar: Footer(),
       ),
     );
   }

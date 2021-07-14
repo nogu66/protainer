@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:protainer/presentation/timeline/timeline_model.dart';
 import 'package:provider/provider.dart';
 
-import '../footer/footer.dart';
-
 class TimelinePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -12,6 +10,7 @@ class TimelinePage extends StatelessWidget {
       create: (_) => TimelineModel(),
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: const Text(
             'Protainer',
             style: TextStyle(fontSize: 30),
@@ -31,7 +30,6 @@ class TimelinePage extends StatelessWidget {
           // backgroundColor: Colors.yellow,
         ),
         // bottomNavigationBar: ,
-        bottomNavigationBar: Footer(),
       ),
     );
   }
