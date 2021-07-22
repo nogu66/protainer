@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:protainer/main.dart';
-import 'package:protainer/presentation/profile/profile_page.dart';
 import 'package:protainer/presentation/set_profile/set_profile_model.dart';
 import 'package:provider/provider.dart';
 
@@ -30,13 +29,6 @@ class SetProfilePage extends StatelessWidget {
                       controller: nameController,
                       onChanged: (text) {
                         model.name = text;
-                      },
-                    ),
-                    TextField(
-                      decoration: InputDecoration(hintText: '紹介文'),
-                      controller: introductionController,
-                      onChanged: (text) {
-                        model.introduction = text;
                       },
                     ),
                     ElevatedButton(

@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:protainer/presentation/login/login_page.dart';
-import 'package:protainer/presentation/signup/signup_page.dart';
 import 'package:provider/provider.dart';
 
 import 'home_model.dart';
@@ -12,13 +10,6 @@ class HomePage extends StatelessWidget {
     return ChangeNotifierProvider<HomeModel>(
       create: (_) => HomeModel()..getProteinsRealtime(),
       child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: const Text(
-            'Protainer',
-            style: TextStyle(fontSize: 30),
-          ),
-        ),
         body: Consumer<HomeModel>(builder: (context, model, child) {
           final proteins = model.proteins;
           // final ListTiles = proteins
@@ -48,26 +39,6 @@ class HomePage extends StatelessWidget {
           return Column(
             children: [
               ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SignUpPage()),
-                  );
-                },
-                child: Text('新規登録'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => LoginPage(),
-                    ),
-                  );
-                },
-                child: Text('ログイン'),
-              ),
-              ElevatedButton(
                 onPressed: () {},
                 child: Text('お気に入りのプロテインを探す'),
               ),
@@ -89,6 +60,28 @@ class HomePage extends StatelessWidget {
         ),
         // bottomNavigationBar: ,
       ),
+    );
+  }
+
+  Future _showDialog(
+    BuildContext context,
+    String title,
+  ) async {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(title),
+          actions: <Widget>[
+            TextButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }

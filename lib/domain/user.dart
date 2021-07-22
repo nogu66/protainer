@@ -5,11 +5,11 @@ class UserData {
   String name;
   String introduction;
   String imageURL;
-  DateTime createdAt;
-  DateTime updatedAt;
+  Timestamp createdAt;
+  Timestamp updatedAt;
 
   UserData(DocumentSnapshot doc) {
-    final data = doc.data() as Map;
+    final data = doc.data() as Map<String, Object>;
     this.id = doc.id;
     this.name = data['name'];
     this.introduction = data['introduction'];

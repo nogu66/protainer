@@ -8,7 +8,6 @@ class SetProfileModel extends ChangeNotifier {
   Future setProfile(uid) async {
     FirebaseFirestore.instance.collection('users').doc(uid).update({
       'name': name,
-      'introduction': introduction,
       'updatedAt': Timestamp.now(),
     });
   }

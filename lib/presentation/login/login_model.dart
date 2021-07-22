@@ -19,6 +19,6 @@ class LoginModel extends ChangeNotifier {
       email: mail,
       password: password,
     );
-    final uid = result.user.uid;
+    // final uid = result.user.uid;
   }
 }

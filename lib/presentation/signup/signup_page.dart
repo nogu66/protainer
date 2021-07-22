@@ -15,6 +15,9 @@ class SignUpPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('新規登録'),
+          iconTheme: const IconThemeData(
+            color: Colors.yellow,
+          ),
         ),
         body: Consumer<SignUpModel>(builder: (context, model, child) {
           return Padding(

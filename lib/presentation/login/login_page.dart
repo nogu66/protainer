@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:protainer/main.dart';
-import 'package:protainer/presentation/home/home_page.dart';
 import 'package:provider/provider.dart';
 
 import 'login_model.dart';
@@ -17,6 +16,9 @@ class LoginPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text('サインアップ'),
+          iconTheme: const IconThemeData(
+            color: Colors.yellow,
+          ),
         ),
         body: Consumer<LoginModel>(
           builder: (context, model, child) {
@@ -48,8 +50,8 @@ class LoginPage extends StatelessWidget {
                     child: Text('ログインする'),
                     onPressed: () async {
                       try {
+                        await _showDialog(context, 'ログインしました');
                         await model.login();
-                        _showDialog(context, 'ログインしました');
                         Navigator.push(
                           context,
                           MaterialPageRoute(

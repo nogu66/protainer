@@ -9,13 +9,6 @@ class RankingPage extends StatelessWidget {
     return ChangeNotifierProvider<RankingModel>(
       create: (_) => RankingModel(),
       child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: const Text(
-            'Protainer',
-            style: TextStyle(fontSize: 30),
-          ),
-        ),
         body: Consumer<RankingModel>(builder: (context, model, child) {
           return Column(
             children: [],
