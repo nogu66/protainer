@@ -39,8 +39,14 @@ class HomePage extends StatelessWidget {
           return Column(
             children: [
               ElevatedButton(
+                style: ElevatedButton.styleFrom(primary: Colors.yellow),
                 onPressed: () {},
-                child: Text('お気に入りのプロテインを探す'),
+                child: Text(
+                  'お気に入りのプロテインを探す',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
               ),
               ListView(
                 shrinkWrap: true,
@@ -51,6 +57,7 @@ class HomePage extends StatelessWidget {
           );
         }),
         floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.yellow,
           onPressed: () {},
           child: const Icon(
             Icons.note_add,

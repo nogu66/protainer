@@ -6,9 +6,11 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 class AddPostModel extends ChangeNotifier {
-  String bodyText = '';
+  String body = '';
   File imageFile;
   bool isLoading = false;
+
+  int textCounter = 0;
 
   startLoading() {
     isLoading = true;
@@ -22,15 +24,15 @@ class AddPostModel extends ChangeNotifier {
 
   Future addPostToFirebase() async {
     // bodyText = FirebaseAuth.instance.currentUser.uid + bodyText;
-    if (bodyText.isEmpty) {
+    if (body.isEmpty) {
       throw ('本文を入力してください');
     }
     final currentUser = FirebaseAuth.instance.currentUser;
     final imageURL = await _uploadImageFile();
     FirebaseFirestore.instance.collection('posts').add(
       {
-        'userId': currentUser.uid,
-        'bodyText': bodyText,
+        'userID': currentUser.uid,
+        'body': body,
         'imageURL': imageURL,
         'createdAt': Timestamp.now(),
       },
@@ -47,7 +49,7 @@ class AddPostModel extends ChangeNotifier {
       return '';
     }
     final storage = FirebaseStorage.instance;
-    final ref = storage.ref().child('posts').child(bodyText);
+    final ref = storage.ref().child('posts').child(body);
 
     final snapshot = await ref
         .putFile(
@@ -57,5 +59,10 @@ class AddPostModel extends ChangeNotifier {
 
     final downloadURL = await snapshot.ref.getDownloadURL();
     return downloadURL;
+  }
+
+  Future<void> getTextCounter() async {
+    this.textCounter = await body.length;
+    notifyListeners();
   }
 }
